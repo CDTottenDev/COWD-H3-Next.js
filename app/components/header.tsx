@@ -1,24 +1,39 @@
 import Link from 'next/link'
+import { ThemeSwitch } from './ui/themeswitch'
 
 export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 items-center">
+      <div className="container flex h-16 items-center">
         <div className="mr-4 flex">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
-            <span className="font-bold">Next.js SEO Boilerplate</span>
+          <Link className="mr-6 flex items-center space-x-2" href="/">
+            <span className="text-xl font-bold text-primary hover:text-primary/90 transition-colors">
+              Central Oregon Web Designs
+            </span>
           </Link>
-          <nav className="flex items-center space-x-6 text-sm font-medium">
-            <Link href="/about" className="transition-colors hover:text-foreground/80">
-              About
-            </Link>
-            <Link href="/blog" className="transition-colors hover:text-foreground/80">
-              Blog
-            </Link>
-            <Link href="/contact" className="transition-colors hover:text-foreground/80">
-              Contact
-            </Link>
+        </div>
+        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
+          <nav className="flex items-center space-x-6">
+            {[
+              ['About', '/about'],
+              ['Services', '/services'],
+              ['Blog', '/blog'],
+              ['Testimonials', '/testimonials'],
+              ['Contact', '/contact'],
+            ].map(([title, url]) => (
+              <Link 
+                key={url} 
+                href={url} 
+                className="text-muted-foreground hover:text-primary transition-colors relative group"
+              >
+                {title}
+                <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform" />
+              </Link>
+            ))}
           </nav>
+          <div className="flex items-center pl-6 border-l">
+            <ThemeSwitch />
+          </div>
         </div>
       </div>
     </header>

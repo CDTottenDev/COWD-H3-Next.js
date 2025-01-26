@@ -3,9 +3,12 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/react'
 import { Header } from './components/header'
-import { Footer } from './components/footer'
+import dynamic from 'next/dynamic'
 import { ThemeProvider } from 'next-themes'
 import { ContactFormProvider } from './components/contact-form-controller'
+
+// Dynamic import for footer
+const COWDfooter = dynamic(() => import('./components/COWDfooter'))
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -28,7 +31,7 @@ export default function RootLayout({
             <main className="min-h-screen pt-20">
               {children}
             </main>
-            <Footer />
+            <COWDfooter />
           </ContactFormProvider>
           <Analytics />
         </ThemeProvider>

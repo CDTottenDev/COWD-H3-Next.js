@@ -38,7 +38,7 @@ export function HeaderActions() {
     <div className="flex items-center gap-4">
       <button
         type="button"
-        className="group flex items-center gap-2 absolute right-[7.25%] transform translate-y-[85%]"
+        className="group flex items-center gap-2 absolute right-[7.25%] transform translate-y-[70%]"
         onClick={() => setIsOpen(true)}
         aria-label="Open contact form"
       >

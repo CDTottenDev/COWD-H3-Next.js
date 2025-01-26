@@ -18,9 +18,11 @@ export function ClientHeader() {
   }, [])
 
   return (
-    <header className={`fixed top-0 left-0 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/95 shadow-sm z-40 transition-all duration-300
-      ${scrolled ? 'mt-3.5 mx-3.5 rounded-lg w-[calc(100%-28px)]' : ''}`}>
-      <div className={`container mx-auto flex items-center justify-between px-4 md:px-8 transition-all duration-300
+    <header 
+      role="banner"
+      className={`fixed top-0 left-0 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/95 shadow-sm z-40 transition-all duration-500 ease-in-out
+      ${scrolled ? 'transform translate-x-[5%] w-[90%] rounded-lg delay-75' : 'transform translate-x-0 w-full delay-0'}`}>
+      <div className={`container mx-auto flex items-center justify-between px-4 md:px-8 transition-all duration-500 ease-in-out
         ${scrolled ? 'h-16' : 'h-20'}`}>
         {/* Logo Section */}
         <div className="flex items-center">
@@ -30,8 +32,9 @@ export function ClientHeader() {
               alt="H3 Logo" 
               width={200}
               height={50}
-              className="h-[50px] w-auto md:h-[40px]"
+              className="h-[50px] w-auto md:h-[40px] transition-all duration-500 ease-in-out"
               priority
+              quality={75}
             />
             <span className="text-lg font-bold">
               <span className="text-black">H3</span>{' '}
@@ -41,7 +44,7 @@ export function ClientHeader() {
         </div>
 
         {/* Navigation Links */}
-        <nav className="hidden md:flex items-center space-x-8 absolute right-[13.5%]">
+        <nav role="navigation" aria-label="Main navigation" className="hidden md:flex items-center space-x-8 absolute right-[13.5%]">
           {[
             ['Home', '/#top'],
             ['Services', '/#services'],
